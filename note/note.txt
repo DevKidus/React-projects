@@ -1,0 +1,2 @@
+- return from App.js different renderes depending of the condition
+-Use react icons - yarn add react-icons
