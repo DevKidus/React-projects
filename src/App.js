@@ -1,28 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Modal from "./Modal";
 
 const App = () => {
-  let [color, setColor] = useState("rgb(0, 0, 0)");
-  return (
-    <div
-      onClick={() => {
-        let numOne = Math.trunc(Math.random() * 255);
-        let numTwo = Math.trunc(Math.random() * 255);
-        let numThree = Math.trunc(Math.random() * 255);
+  let [modalView, setModalView] = useState(false);
 
-        setColor(`rgb(${numOne}, ${numTwo}, ${numThree})`);
-      }}
-      className="grid place-content-center text-center cursor-pointer"
-      style={{
-        backgroundColor: color,
-        width: "100%",
-        height: "100vh",
-        color: "#fff",
-      }}
-    >
-      <h1 className="text-3xl font-bold">
-        Click On The Background to Change Color{" "}
-      </h1>
-      <p className="text-2xl font-bold my-14">{color}</p>
+  const hideModal = () => {
+    setModalView(false);
+  };
+
+  return (
+    <div className="w-full h-screen grid place-items-center font-Noto">
+      <button
+        onClick={() => {
+          setModalView(true);
+        }}
+        className="px-8 py-2 bg-gray-800 text-white rounded-lg"
+      >
+        Click
+      </button>
+      {modalView && <Modal hideModal={hideModal} />}
     </div>
   );
 };
